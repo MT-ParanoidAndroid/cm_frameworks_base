@@ -42,6 +42,7 @@ include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES:= \
 	$(commonSources) \
+	Overlay.cpp \
 	EGLUtils.cpp \
 	FramebufferNativeWindow.cpp \
 	GraphicBuffer.cpp \
@@ -65,6 +66,10 @@ LOCAL_SHARED_LIBRARIES := \
 
 LOCAL_C_INCLUDES := \
     external/skia/include/core
+
+ifeq ($(BOARD_USES_HTC_CAMERA),true)
+    LOCAL_SRC_FILES+= OverlayHtc.cpp
+endif
 
 LOCAL_MODULE:= libui
 
